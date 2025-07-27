@@ -1,0 +1,34 @@
+[
+  {
+    "id": 1,
+    "name": "F. Scott Fitzgerald",
+    "birth_year": 1896,
+    "death_year": 1940,
+    "nationality": "American",
+    "biography": "Francis Scott Key Fitzgerald was an American novelist, essayist, screenwriter, and short-story writer."
+  },
+  {
+    "id": 2,
+    "name": "Harper Lee",
+    "birth_year": 1926,
+    "death_year": 2016,
+    "nationality": "American",
+    "biography": "Nelle Harper Lee was an American novelist best known for her 1960 novel To Kill a Mockingbird."
+  },
+  {
+    "id": 3,
+    "name": "George Orwell",
+    "birth_year": 1903,
+    "death_year": 1950,
+    "nationality": "British",
+    "biography": "Eric Arthur Blair, known by his pen name George Orwell, was an English novelist, essayist, journalist, and critic."
+  },
+  {
+    "id": 4,
+    "name": "Jane Austen",
+    "birth_year": 1775,
+    "death_year": 1817,
+    "nationality": "British",
+    "biography": "Jane Austen was an English novelist known primarily for her six major novels."
+  }
+] 

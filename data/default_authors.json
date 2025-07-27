@@ -1,0 +1,58 @@
+[
+  {
+    "id": 1,
+    "name": "F. Scott Fitzgerald",
+    "birth_year": 1896,
+    "death_year": 1940,
+    "nationality": "American",
+    "biography": "Francis Scott Key Fitzgerald was an American novelist, essayist, screenwriter, and short-story writer."
+  },
+  {
+    "id": 2,
+    "name": "Harper Lee",
+    "birth_year": 1926,
+    "death_year": 2016,
+    "nationality": "American",
+    "biography": "Nelle Harper Lee was an American novelist best known for her 1960 novel To Kill a Mockingbird."
+  },
+  {
+    "id": 3,
+    "name": "George Orwell",
+    "birth_year": 1903,
+    "death_year": 1950,
+    "nationality": "British",
+    "biography": "Eric Arthur Blair, known by his pen name George Orwell, was an English novelist, essayist, journalist, and critic."
+  },
+  {
+    "id": 4,
+    "name": "Jane Austen",
+    "birth_year": 1775,
+    "death_year": 1817,
+    "nationality": "British",
+    "biography": "Jane Austen was an English novelist known primarily for her six major novels."
+  },
+  {
+    "id": 5,
+    "name": "J.R.R. Tolkien",
+    "birth_year": 1892,
+    "death_year": 1973,
+    "nationality": "British",
+    "biography": "John Ronald Reuel Tolkien was an English writer, poet, philologist, and university professor."
+  },
+  {
+    "id": 6,
+    "name": "J.K. Rowling",
+    "birth_year": 1965,
+    "death_year": null,
+    "nationality": "British",
+    "biography": "Joanne Rowling, known by her pen name J.K. Rowling, is a British author and philanthropist."
+  },
+  {
+    "id": 7,
+    "name": "J.D. Salinger",
+    "birth_year": 1919,
+    "death_year": 2010,
+    "nationality": "American",
+    "biography": "Jerome David Salinger was an American writer best known for his 1951 novel The Catcher in the Rye."
+  }
+] 

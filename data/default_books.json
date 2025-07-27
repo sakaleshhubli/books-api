@@ -1,0 +1,66 @@
+[
+  {
+    "id": 1,
+    "title": "The Great Gatsby",
+    "author": "F. Scott Fitzgerald",
+    "year": 1925,
+    "genre": "Fiction",
+    "description": "A story of the fabulously wealthy Jay Gatsby and his love for the beautiful Daisy Buchanan."
+  },
+  {
+    "id": 2,
+    "title": "To Kill a Mockingbird",
+    "author": "Harper Lee",
+    "year": 1960,
+    "genre": "Fiction",
+    "description": "The story of young Scout Finch and her father Atticus in a racially divided Alabama town."
+  },
+  {
+    "id": 3,
+    "title": "1984",
+    "author": "George Orwell",
+    "year": 1949,
+    "genre": "Dystopian",
+    "description": "A dystopian novel about totalitarianism and surveillance society."
+  },
+  {
+    "id": 4,
+    "title": "Pride and Prejudice",
+    "author": "Jane Austen",
+    "year": 1813,
+    "genre": "Romance",
+    "description": "The story of Elizabeth Bennet and Mr. Darcy in Georgian-era England."
+  },
+  {
+    "id": 5,
+    "title": "The Hobbit",
+    "author": "J.R.R. Tolkien",
+    "year": 1937,
+    "genre": "Fantasy",
+    "description": "A fantasy novel about a hobbit's journey to help reclaim a dwarf kingdom."
+  },
+  {
+    "id": 6,
+    "title": "The Lord of the Rings",
+    "author": "J.R.R. Tolkien",
+    "year": 1954,
+    "genre": "Fantasy",
+    "description": "An epic high-fantasy novel about the quest to destroy a powerful ring."
+  },
+  {
+    "id": 7,
+    "title": "Harry Potter and the Philosopher's Stone",
+    "author": "J.K. Rowling",
+    "year": 1997,
+    "genre": "Fantasy",
+    "description": "The first novel in the Harry Potter series about a young wizard."
+  },
+  {
+    "id": 8,
+    "title": "The Catcher in the Rye",
+    "author": "J.D. Salinger",
+    "year": 1951,
+    "genre": "Fiction",
+    "description": "A novel about teenage alienation and loss of innocence in post-World War II America."
+  }
+] 

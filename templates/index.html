@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book API - Modern Library Management</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <a href="/" class="logo">
+                    <i class="fas fa-book-open"></i>
+                    Book API
+                </a>
+                <nav class="nav" id="mainNav">
+                    <a href="/" class="nav-link active" data-page="home">
+                        <i class="fas fa-home"></i> Home
+                    </a>
+                    <a href="/books" class="nav-link" data-page="books">
+                        <i class="fas fa-books"></i> Books
+                    </a>
+                    <a href="/authors" class="nav-link" data-page="authors">
+                        <i class="fas fa-users"></i> Authors
+                    </a>
+                    <a href="/login" class="nav-link" data-page="login" id="loginLink">
+                        <i class="fas fa-sign-in-alt"></i> Login
+                    </a>
+                    <a href="/profile" class="nav-link hidden" data-page="profile" id="profileLink">
+                        <i class="fas fa-user"></i> Profile
+                    </a>
+                    <button class="btn btn-secondary" id="logoutBtn" style="display: none;">
+                        <i class="fas fa-sign-out-alt"></i> Logout
+                    </button>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main">
+        <div class="container">
+            <!-- Home Page -->
+            <div id="homePage" class="page active">
+                <div class="section-header">
+                    <h1 class="section-title">Welcome to Book API</h1>
+                    <p class="section-subtitle">A modern library management system with JWT authentication and role-based access control</p>
+                </div>
+
+                <!-- Stats Cards -->
+                <div class="grid grid-3 mb-8">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">Total Books</h3>
+                            <i class="fas fa-book text-primary" style="color: var(--primary-color); font-size: 2rem;"></i>
+                        </div>
+                        <div class="card-content">
+                            <div id="totalBooks" class="text-center" style="font-size: 2rem; font-weight: 700; color: var(--primary-color);">-</div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">Total Authors</h3>
+                            <i class="fas fa-user-edit text-primary" style="color: var(--secondary-color); font-size: 2rem;"></i>
+                        </div>
+                        <div class="card-content">
+                            <div id="totalAuthors" class="text-center" style="font-size: 2rem; font-weight: 700; color: var(--secondary-color);">-</div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">API Status</h3>
+                            <i class="fas fa-server text-primary" style="color: var(--success-color); font-size: 2rem;"></i>
+                        </div>
+                        <div class="card-content">
+                            <div id="apiStatus" class="text-center" style="font-size: 2rem; font-weight: 700; color: var(--success-color);">Online</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Features -->
+                <div class="section">
+                    <h2 class="section-title text-center">Features</h2>
+                    <div class="grid grid-2">
+                        <div class="card">
+                            <div class="card-header">
+                                <h3 class="card-title">🔐 JWT Authentication</h3>
+                            </div>
+                            <div class="card-content">
+                                <p>Secure token-based authentication with role-based access control. Support for user, moderator, and admin roles.</p>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="card-header">
+                                <h3 class="card-title">📚 Book Management</h3>
+                            </div>
+                            <div class="card-content">
+                                <p>Complete CRUD operations for books with search, filtering, and pagination capabilities.</p>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="card-header">
+                                <h3 class="card-title">👨‍💼 Author Management</h3>
+                            </div>
+                            <div class="card-content">
+                                <p>Manage authors with full CRUD operations and relationship tracking with books.</p>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="card-header">
+                                <h3 class="card-title">📊 Data Management</h3>
+                            </div>
+                            <div class="card-content">
+                                <p>Backup, restore, export, and import functionality for data management and migration.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Quick Actions -->
+                <div class="section">
+                    <h2 class="section-title text-center">Quick Actions</h2>
+                    <div class="text-center">
+                        <a href="/books" class="btn btn-primary btn-lg">
+                            <i class="fas fa-books"></i> Browse Books
+                        </a>
+                        <a href="/authors" class="btn btn-secondary btn-lg">
+                            <i class="fas fa-users"></i> View Authors
+                        </a>
+                        <a href="/login" class="btn btn-success btn-lg">
+                            <i class="fas fa-sign-in-alt"></i> Login
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Books Page -->
+            <div id="booksPage" class="page hidden">
+                <div class="section-header">
+                    <h1 class="section-title">Books Library</h1>
+                    <p class="section-subtitle">Explore our collection of books with advanced search and filtering</p>
+                </div>
+
+                <!-- Search Bar -->
+                <div class="search-container">
+                    <form class="search-form" id="searchForm">
+                        <input type="text" class="search-input" id="searchInput" placeholder="Search books by title, author, genre, or description...">
+                        <button type="submit" class="btn btn-primary">
+                            <i class="fas fa-search"></i> Search
+                        </button>
+                        <button type="button" class="btn btn-secondary" id="clearSearch">
+                            <i class="fas fa-times"></i> Clear
+                        </button>
+                    </form>
+                </div>
+
+                <!-- Add Book Button -->
+                <div class="text-center mb-6" id="addBookSection" style="display: none;">
+                    <button class="btn btn-success btn-lg" id="addBookBtn">
+                        <i class="fas fa-plus"></i> Add New Book
+                    </button>
+                </div>
+
+                <!-- Books Grid -->
+                <div id="booksGrid" class="grid grid-3">
+                    <!-- Books will be loaded here -->
+                </div>
+
+                <!-- Loading State -->
+                <div id="booksLoading" class="loading hidden">
+                    <div class="spinner"></div>
+                </div>
+
+                <!-- Pagination -->
+                <div id="pagination" class="text-center mt-8" style="display: none;">
+                    <button class="btn btn-secondary" id="prevPage">
+                        <i class="fas fa-chevron-left"></i> Previous
+                    </button>
+                    <span id="pageInfo" class="mx-4" style="color: var(--gray-600);"></span>
+                    <button class="btn btn-secondary" id="nextPage">
+                        Next <i class="fas fa-chevron-right"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Authors Page -->
+            <div id="authorsPage" class="page hidden">
+                <div class="section-header">
+                    <h1 class="section-title">Authors</h1>
+                    <p class="section-subtitle">Discover the talented authors in our collection</p>
+                </div>
+
+                <!-- Add Author Button -->
+                <div class="text-center mb-6" id="addAuthorSection" style="display: none;">
+                    <button class="btn btn-success btn-lg" id="addAuthorBtn">
+                        <i class="fas fa-plus"></i> Add New Author
+                    </button>
+                </div>
+
+                <!-- Authors Table -->
+                <div class="table-container">
+                    <table class="table" id="authorsTable">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Biography</th>
+                                <th>Books Count</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="authorsTableBody">
+                            <!-- Authors will be loaded here -->
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Loading State -->
+                <div id="authorsLoading" class="loading hidden">
+                    <div class="spinner"></div>
+                </div>
+            </div>
+
+            <!-- Login Page -->
+            <div id="loginPage" class="page hidden">
+                <div class="auth-container">
+                    <div class="auth-card">
+                        <div class="auth-header">
+                            <h1 class="auth-title">Welcome Back</h1>
+                            <p class="auth-subtitle">Sign in to your account to continue</p>
+                        </div>
+
+                        <form id="loginForm">
+                            <div class="form-group">
+                                <label for="loginUsername" class="form-label">Username</label>
+                                <input type="text" id="loginUsername" class="form-input" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="loginPassword" class="form-label">Password</label>
+                                <input type="password" id="loginPassword" class="form-input" required>
+                            </div>
+                            <button type="submit" class="btn btn-primary w-full">
+                                <i class="fas fa-sign-in-alt"></i> Sign In
+                            </button>
+                        </form>
+
+                        <div class="text-center mt-6">
+                            <p>Don't have an account? <a href="/register" class="nav-link" data-page="register">Register here</a></p>
+                        </div>
+
+                        <!-- Demo Credentials -->
+                        <div class="alert alert-info mt-6">
+                            <h4>Demo Credentials:</h4>
+                            <p><strong>Admin:</strong> admin / admin123</p>
+                            <p><strong>Moderator:</strong> moderator / moderator123</p>
+                            <p><strong>User:</strong> user / user123</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Register Page -->
+            <div id="registerPage" class="page hidden">
+                <div class="auth-container">
+                    <div class="auth-card">
+                        <div class="auth-header">
+                            <h1 class="auth-title">Create Account</h1>
+                            <p class="auth-subtitle">Join our community today</p>
+                        </div>
+
+                        <form id="registerForm">
+                            <div class="form-group">
+                                <label for="registerUsername" class="form-label">Username</label>
+                                <input type="text" id="registerUsername" class="form-input" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="registerEmail" class="form-label">Email</label>
+                                <input type="email" id="registerEmail" class="form-input" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="registerPassword" class="form-label">Password</label>
+                                <input type="password" id="registerPassword" class="form-input" required>
+                            </div>
+                            <button type="submit" class="btn btn-primary w-full">
+                                <i class="fas fa-user-plus"></i> Create Account
+                            </button>
+                        </form>
+
+                        <div class="text-center mt-6">
+                            <p>Already have an account? <a href="/login" class="nav-link" data-page="login">Sign in here</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Profile Page -->
+            <div id="profilePage" class="page hidden">
+                <div class="section-header">
+                    <h1 class="section-title">User Profile</h1>
+                    <p class="section-subtitle">Manage your account settings</p>
+                </div>
+
+                <div class="grid grid-2">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">Profile Information</h3>
+                        </div>
+                        <div class="card-content">
+                            <div id="profileInfo">
+                                <!-- Profile info will be loaded here -->
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">Update Profile</h3>
+                        </div>
+                        <div class="card-content">
+                            <form id="updateProfileForm">
+                                <div class="form-group">
+                                    <label for="updateEmail" class="form-label">Email</label>
+                                    <input type="email" id="updateEmail" class="form-input">
+                                </div>
+                                <div class="form-group">
+                                    <label for="updatePassword" class="form-label">New Password (optional)</label>
+                                    <input type="password" id="updatePassword" class="form-input">
+                                </div>
+                                <button type="submit" class="btn btn-primary">
+                                    <i class="fas fa-save"></i> Update Profile
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Modals -->
+    
+    <!-- Add/Edit Book Modal -->
+    <div id="bookModal" class="modal-overlay hidden">
+        <div class="modal">
+            <div class="modal-header">
+                <h3 class="modal-title" id="bookModalTitle">Add New Book</h3>
+                <button class="modal-close" id="closeBookModal">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="bookForm">
+                    <input type="hidden" id="bookId">
+                    <div class="form-group">
+                        <label for="bookTitle" class="form-label">Title *</label>
+                        <input type="text" id="bookTitle" class="form-input" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="bookAuthor" class="form-label">Author *</label>
+                        <input type="text" id="bookAuthor" class="form-input" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="bookYear" class="form-label">Publication Year</label>
+                        <input type="number" id="bookYear" class="form-input" min="1800" max="2024">
+                    </div>
+                    <div class="form-group">
+                        <label for="bookGenre" class="form-label">Genre</label>
+                        <input type="text" id="bookGenre" class="form-input">
+                    </div>
+                    <div class="form-group">
+                        <label for="bookDescription" class="form-label">Description</label>
+                        <textarea id="bookDescription" class="form-textarea" rows="4"></textarea>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" id="cancelBookModal">Cancel</button>
+                <button class="btn btn-primary" id="saveBookModal">Save Book</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add/Edit Author Modal -->
+    <div id="authorModal" class="modal-overlay hidden">
+        <div class="modal">
+            <div class="modal-header">
+                <h3 class="modal-title" id="authorModalTitle">Add New Author</h3>
+                <button class="modal-close" id="closeAuthorModal">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="authorForm">
+                    <input type="hidden" id="authorId">
+                    <div class="form-group">
+                        <label for="authorName" class="form-label">Name *</label>
+                        <input type="text" id="authorName" class="form-input" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="authorBiography" class="form-label">Biography</label>
+                        <textarea id="authorBiography" class="form-textarea" rows="4"></textarea>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" id="cancelAuthorModal">Cancel</button>
+                <button class="btn btn-primary" id="saveAuthorModal">Save Author</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Alert Container -->
+    <div id="alertContainer" style="position: fixed; top: 20px; right: 20px; z-index: 1001; max-width: 400px;"></div>
+
+    <!-- JavaScript -->
+    <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+</body>
+</html> 

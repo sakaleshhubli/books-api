@@ -1,0 +1,29 @@
+[
+  {
+    "id": 1,
+    "username": "admin",
+    "email": "admin@example.com",
+    "password_hash": "$2b$12$W5d1Hje05R8rMNAfmAfoXeC9rX1K89cLL1MdsFkFoTzi2s/S.k2OK",
+    "role": "admin",
+    "is_active": true,
+    "created_at": "2024-01-15T10:00:00"
+  },
+  {
+    "id": 2,
+    "username": "moderator",
+    "email": "moderator@example.com",
+    "password_hash": "$2b$12$0Umy3ev.Wjs5uwfjm3k0de.f54l0sCy8dES7TCY8AVhykZckrg7ri",
+    "role": "moderator",
+    "is_active": true,
+    "created_at": "2024-01-15T10:00:00"
+  },
+  {
+    "id": 3,
+    "username": "user",
+    "email": "user@example.com",
+    "password_hash": "$2b$12$W5d1Hje05R8rMNAfmAfoXeC9rX1K89cLL1MdsFkFoTzi2s/S.k2OK",
+    "role": "user",
+    "is_active": true,
+    "created_at": "2024-01-15T10:00:00"
+  }
+]
