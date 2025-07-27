@@ -1,50 +1,7 @@
-# 📚 Book API
+📚 Books API
 
 A comprehensive RESTful API for managing books and authors, built with Flask using a modular architecture. Perfect for learning REST APIs, testing with Postman, and building scalable applications.
 
-## 🏗️ Project Structure
-
-```
-book_api/
-│
-├── app.py                      # Main application file
-├── config.py                   # Configuration settings
-├── books.json                  # Runtime book data (auto-generated)
-├── authors.json                # Runtime author data (auto-generated)
-├── .gitignore                  # Git ignore rules
-│
-├── data/                       # Default data files
-│   ├── default_books.json      # Sample books (version controlled)
-│   └── default_authors.json    # Sample authors (version controlled)
-│
-├── models/                     # Data layer
-│   ├── __init__.py             # Initialize models
-│   ├── book.py                 # Book model & operations
-│   └── author.py               # Author model & operations
-│
-├── routes/                     # API endpoints
-│   ├── __init__.py             # Initialize routes
-│   ├── books.py                # Book routes (blueprint)
-│   └── authors.py              # Author routes (blueprint)
-│
-├── schemas/                    # Data serialization
-│   ├── __init__.py             # Initialize schemas
-│   ├── book_schema.py          # Book serialization
-│   └── author_schema.py        # Author serialization
-│
-├── utils/                      # Utilities
-│   ├── __init__.py             # Initialize utils
-│   └── data_manager.py         # Data management utilities
-│
-├── static/                     # Static files
-├── templates/                  # HTML templates
-├── requirements.txt            # Project dependencies
-│
-└── tests/                      # Test suite
-    ├── __init__.py
-    ├── test_models.py          # Model tests
-    └── test_routes.py          # Route tests
-```
 
 ## 🚀 Features
 
@@ -622,14 +579,3 @@ Search functionality supports:
 5. Run the test suite
 6. Submit a pull request
 
-## 📄 License
-
-This project is licensed under the MIT License.
-
-## 🤝 Support
-
-For support and questions, please open an issue on GitHub.
-
----
-
-**Happy API Testing! 🚀** 
